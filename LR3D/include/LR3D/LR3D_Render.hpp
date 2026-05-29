@@ -1,7 +1,6 @@
 #ifndef LR3D_RENDER_HPP
 #define LR3D_RENDER_HPP
 #include "LR3D_Math.hpp"
-//#include "../Fonts/LR3D_Gorton.hpp"
 #include <cstdio>
 #include <cstdint>
 #include <vector>
@@ -16,6 +15,10 @@ namespace LR3D {
     extern int WIDTH, HEIGHT, FOV;
     extern float SCALE;
     extern std::vector<char> buffer;
+    extern char color_text_cache[256][3];
+
+    void initProjection();
+    void initColorCache();
 
     struct Clock {
         std::chrono::time_point<std::chrono::high_resolution_clock> last_time;
@@ -53,17 +56,14 @@ namespace LR3D {
     struct Mesh2D {
         std::vector<LR3D::Vec2f> vertices;
         std::vector<int> indices;
-        std::vector<Pixel> colors;
     };
 
     struct Mesh3D {
         std::vector<Vec3f> vertices;
         std::vector<int> indices;
-        std::vector<Pixel> colors;
     };
 
     struct Rasterizer {
-        void initProjection();
         Vec2f fixed_camera_project(Vec3f A);
         void draw_line_dda(Screen &screen, Vec2f A, Vec2f B, Pixel color);
         void draw_line_bresenham(Screen &screen, Vec2f A, Vec2f B, Pixel color);
@@ -75,7 +75,6 @@ namespace LR3D {
         void draw_mesh_2D(Screen &screen, Mesh2D &mesh, Vec2f pos, float rot, float scale, Pixel color);
         void draw_mesh_3D(Screen &screen, Mesh3D &mesh, Vec3f pos, Vec3f rot, float scale, Pixel color);
         void draw_mesh_bounds(Screen &screen, Mesh3D &mesh, Vec3f pos, Vec3f rot, Pixel color);
-        //void draw_char(Screen &screen, char c, Vec2f pos, float rot, float scale, Pixel color);
     };
     void merge_mesh(Mesh3D &main_mesh, const Mesh3D &addon_mesh, Vec3f offset);
 }

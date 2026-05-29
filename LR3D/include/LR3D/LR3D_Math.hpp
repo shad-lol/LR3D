@@ -37,5 +37,21 @@ namespace LR3D {
         static float dot(const Vec3f &a, const Vec3f &b);
         static Vec3f rotate(Vec3f v, Vec3f rad);
     };
+
+    struct Vec4f {
+        float x, y, z, w;
+        Vec4f() : x(0), y(0), z(0), w(0) {}
+        Vec4f(float _x, float _y, float _z, float _w) : x(_x), y(_y), z(_z), w(_w) {}
+        Vec4f operator+(const Vec4f &other) const {return {x + other.x, y + other.y, z + other.z, w + other.w};}
+        Vec4f operator-(const Vec4f &other) const {return {x - other.x, y - other.y, z - other.z, w - other.w};}
+        Vec4f operator*(float s) const {return {x * s, y * s, z * s, w * s};}
+        Vec4f& operator+=(const Vec4f &other) {x += other.x; y += other.y; z += other.z; w += other.w; return *this;}
+        Vec4f& operator-=(const Vec4f &other) {x -= other.x; y -= other.y; z -= other.z; w -= other.w; return *this;}
+        Vec4f& operator*=(float s) {x *= s; y *= s; z *= s; w *= s; return *this;}
+        float length() const;
+        Vec4f normalize() const;
+        static float dot(const Vec4f &a, const Vec4f &b);
+        static Vec4f rotate(Vec4f v, Vec4f rad);
+    };
 }
 #endif

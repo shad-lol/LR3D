@@ -15,6 +15,10 @@ namespace LR3D {
     extern int WIDTH, HEIGHT, FOV;
     extern float SCALE;
     extern std::vector<char> buffer;
+    extern char color_text_cache[256][3];
+
+    void initProjection();
+    void initColorCache();
 
     struct Clock {
         std::chrono::time_point<std::chrono::high_resolution_clock> last_time;
@@ -60,7 +64,6 @@ namespace LR3D {
     };
 
     struct Rasterizer {
-        void initProjection();
         Vec2f fixed_camera_project(Vec3f A);
         void draw_line_dda(Screen &screen, Vec2f A, Vec2f B, Pixel color);
         void draw_line_bresenham(Screen &screen, Vec2f A, Vec2f B, Pixel color);
