@@ -17,6 +17,10 @@
 					<Add option="-Wall" />
 					<Add option="-g" />
 				</Compiler>
+				<ExtraCommands>
+					<Add after='cmd /c xcopy /Y /Q &quot;$(TARGET_OUTPUT_DIR)*.a&quot; &quot;$(PROJECT_DIR)..\LR3D\lib\&quot;' />
+					<Add after='cmd /c xcopy /Y /Q &quot;$(PROJECT_DIR)*.hpp&quot; &quot;$(PROJECT_DIR)..\LR3D\include\&quot;' />
+				</ExtraCommands>
 			</Target>
 			<Target title="Release">
 				<Option output="bin/Release/LR3D" prefix_auto="1" extension_auto="1" />
@@ -41,7 +45,16 @@
 			<Add library="../LR3D/lib/libLR3D.a" />
 			<Add directory="C:/Users/user/Desktop/LR3D/lib" />
 		</Linker>
+		<ExtraCommands>
+			<Add after='cmd /c xcopy /Y /Q &quot;$(TARGET_OUTPUT_DIR)*.a&quot; &quot;..\LR3D\lib\&quot;' />
+			<Add after='cmd /c xcopy /Y /Q &quot;*.h&quot; &quot;..\LR3D\include\&quot;' />
+		</ExtraCommands>
 		<Unit filename="LR3D/Fonts/LR3D_Gorton.hpp" />
+		<Unit filename="LR3D/LR3D_Clock.cpp" />
+		<Unit filename="LR3D/LR3D_Clock.hpp" />
+		<Unit filename="LR3D/LR3D_Color.hpp" />
+		<Unit filename="LR3D/LR3D_Colors.hpp" />
+		<Unit filename="LR3D/LR3D_Framebuffer.hpp" />
 		<Unit filename="LR3D/LR3D_Input.hpp" />
 		<Unit filename="LR3D/LR3D_Math.cpp" />
 		<Unit filename="LR3D/LR3D_Math.hpp" />

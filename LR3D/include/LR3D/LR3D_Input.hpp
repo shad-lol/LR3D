@@ -1,6 +1,6 @@
+#pragma once
 #ifndef LR3D_INPUT_HPP
 #define LR3D_INPUT_HPP
-
 #include <windows.h>
 
 namespace LR3D {

@@ -1,6 +1,6 @@
+#pragma once
 #ifndef LR3D_MATH_HPP
 #define LR3D_MATH_HPP
-
 #include <cmath>
 
 #ifndef M_PI
@@ -9,7 +9,6 @@
 #endif
 
 namespace LR3D {
-
     struct Vec2f {
         float x, y;
         Vec2f() : x(0), y(0) {}
